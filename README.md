@@ -96,14 +96,14 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
 #### Unix/Linux/macOS
 
 ```bash
-curl -X GET "https://dubois-buyse.onrender.com/api?level=1" \
+curl -X GET "https://duboisbuyse.onrender.com/api?level=1" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
 #### Windows PowerShell
 
 ```powershell
-curl -X GET "https://dubois-buyse.onrender.com/api?level=1" `
+curl -X GET "https://duboisbuyse.onrender.com/api?level=1" `
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
@@ -112,7 +112,7 @@ curl -X GET "https://dubois-buyse.onrender.com/api?level=1" `
 #### Using API Key in Headers
 
 ```javascript
-fetch("https://dubois-buyse.onrender.com/api?level=1", {
+fetch("https://duboisbuyse.onrender.com/api?level=1", {
     method: "GET",
     headers: {
         "x-api-key": "YOUR_API_KEY_HERE",
@@ -131,7 +131,7 @@ fetch("https://dubois-buyse.onrender.com/api?level=1", {
 #### Using API Key as Query Parameter
 
 ```javascript
-fetch("https://dubois-buyse.onrender.com/api?level=1&api_key=YOUR_API_KEY_HERE")
+fetch("https://duboisbuyse.onrender.com/api?level=1&api_key=YOUR_API_KEY_HERE")
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

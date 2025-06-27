@@ -4,26 +4,26 @@ module.exports = function (data) {
     const router = express.Router();
 
     router.get("/", (req, res) => {
-        const { echellon: rawEchellon, type } = req.query;
+        const { echelon: rawEchelon, type } = req.query;
 
         console.log(req.query);
-        const echellon = rawEchellon ? Number(rawEchellon) : undefined;
+        const echelon = rawEchelon ? Number(rawEchelon) : undefined;
         const isQueryEmpty = Object.keys(req.query).length > 0;
         let response = data;
 
         if (!isQueryEmpty) {
             return res.status(400).json({
-                error: "You should provide at least one query parameter  'echellon' or 'type'",
+                error: "You should provide at least one query parameter 'echelon' or 'type'",
             });
         }
 
-        if (echellon !== undefined) {
-            if (isNaN(echellon) || echellon < 1 || echellon > 43) {
+        if (echelon !== undefined) {
+            if (isNaN(echelon) || echelon < 1 || echelon > 43) {
                 return res.status(400).json({
-                    error: "The parameter echellon should be a number between 1 and 43",
+                    error: "The parameter echelon should be a number between 1 and 43",
                 });
             }
-            response = response.filter((item) => item.echellon == echellon);
+            response = response.filter((item) => item.echelon == echelon);
         }
 
         if (type) {

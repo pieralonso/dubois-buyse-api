@@ -38,7 +38,7 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
 
 | Parameter | Type   | Description                                                 |
 | --------- | ------ | ----------------------------------------------------------- |
-| echellon  | Number | Difficulty level (1-43)                                     |
+| echelon   | Number | Difficulty level (1-43)                                     |
 | type      | Text   | Grammatical type (e.g., "nom masculin", "verbe 1er groupe") |
 
 **Note**: For the `type` parameter, you don't need to provide the complete grammatical type. The API performs partial matching, so providing just a word like `nom` or `verbe` will match all types containing that word. For example, `type=nom` will match both "nom masculin" and "nom femenin".
@@ -69,12 +69,12 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
   "results": [
     {
       "mot": "maison",
-      "echellon": 1,
+      "echelon": 1,
       "tipe": "nom femenin"
     },
     {
       "mot": "chat",
-      "echellon": 1,
+      "echelon": 1,
       "tipe": "nom masculin"
     },
     ...
@@ -91,64 +91,57 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
 
 ## Examples
 
-> **Note**: The examples below show how to make API requests in different environments. In Unix-based systems (Linux/macOS), use the backslash (`\`) for line continuation. In Windows PowerShell, use the backtick (`` ` ``) character. PowerShell also provides the native `Invoke-RestMethod` cmdlet as an alternative to curl.
-
-### Basic Request (with API key in header)
+### cURL Examples
 
 #### Unix/Linux/macOS
 
 ```bash
-curl -X GET "https://dubois-api.onrender.com/api?echellon=1" \
+curl -X GET "https://dubois-buyse.onrender.com/api?echelon=1" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
 #### Windows PowerShell
 
 ```powershell
-curl -X GET "https://dubois-api.onrender.com/api?echellon=1"
--H "x-api-key: YOUR_API_KEY_HERE"
-```
-
-### Filter by echelon and type
-
-#### Unix/Linux/macOS
-
-```bash
-curl -X GET "https://dubois-api.onrender.com/api?echellon=1&type=nom" \
+curl -X GET "https://dubois-buyse.onrender.com/api?echelon=1" `
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
-#### Windows PowerShell
+### JavaScript Fetch Examples
 
-```powershell
-curl -X GET "https://dubois-api.onrender.com/api?echellon=1&type=nom"
-  -H "x-api-key: YOUR_API_KEY_HERE"
+#### Using API Key in Headers
+
+```javascript
+fetch("https://dubois-buyse.onrender.com/api?echelon=1", {
+    method: "GET",
+    headers: {
+        "x-api-key": "YOUR_API_KEY_HERE",
+    },
+})
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
 ```
 
-### Examples of partial type matching
+#### Using API Key as Query Parameter
 
-#### Unix/Linux/macOS
-
-```bash
-# Get all verbs (matches "verbe 1er groupe", "verbe 2ème groupe", etc.)
-curl -X GET "https://dubois-api.onrender.com/api?type=verbe" \
-  -H "x-api-key: YOUR_API_KEY_HERE"
-
-# Get all adjectives (matches "adjectif qualif", "adjectif indéfi", etc.)
-curl -X GET "https://dubois-api.onrender.com/api?type=adjectif" \
-  -H "x-api-key: YOUR_API_KEY_HERE"
-```
-
-#### Windows PowerShell
-
-```powershell
-# Get all verbs
-curl -X GET "https://dubois-api.onrender.com/api?type=verbe"
-  -H "x-api-key: YOUR_API_KEY_HERE"
-
-# Get all adjectives
-curl -X GET "https://dubois-api.onrender.com/api?type=adjectif" `
-  -H "x-api-key: YOUR_API_KEY_HERE"
+```javascript
+fetch(
+    "https://dubois-buyse.onrender.com/api?echelon=1&api_key=YOUR_API_KEY_HERE"
+)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
 ```
 
 ## Usage Limits

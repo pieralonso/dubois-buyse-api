@@ -4,7 +4,7 @@ API for accessing the Dubois Buyse vocabulary method. This API provides access t
 
 ## Features
 
-- Search words by echelon (difficulty level)
+- Search words by level (echelon or difficulty level)
 - Filter by grammatical type
 - Rate limiting to prevent excessive use
 - API key authentication
@@ -38,7 +38,7 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
 
 | Parameter | Type   | Description                                                 |
 | --------- | ------ | ----------------------------------------------------------- |
-| echelon   | Number | Difficulty level (1-43)                                     |
+| level     | Number | Difficulty level (1-43)                                     |
 | type      | Text   | Grammatical type (e.g., "nom masculin", "verbe 1er groupe") |
 
 **Note**: For the `type` parameter, you don't need to provide the complete grammatical type. The API performs partial matching, so providing just a word like `nom` or `verbe` will match all types containing that word. For example, `type=nom` will match both "nom masculin" and "nom femenin".
@@ -68,14 +68,14 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
   "total": 42,
   "results": [
     {
-      "mot": "maison",
-      "echelon": 1,
-      "tipe": "nom femenin"
+      "word": "maison",
+      "level": 1,
+      "type": "nom femenin"
     },
     {
-      "mot": "chat",
-      "echelon": 1,
-      "tipe": "nom masculin"
+      "word": "chat",
+      "level": 1,
+      "type": "nom masculin"
     },
     ...
   ]
@@ -96,14 +96,14 @@ Returns Dubois Buyse vocabulary words filtered by the provided parameters.
 #### Unix/Linux/macOS
 
 ```bash
-curl -X GET "https://dubois-buyse.onrender.com/api?echelon=1" \
+curl -X GET "https://dubois-buyse.onrender.com/api?level=1" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
 #### Windows PowerShell
 
 ```powershell
-curl -X GET "https://dubois-buyse.onrender.com/api?echelon=1" `
+curl -X GET "https://dubois-buyse.onrender.com/api?level=1" `
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
@@ -112,7 +112,7 @@ curl -X GET "https://dubois-buyse.onrender.com/api?echelon=1" `
 #### Using API Key in Headers
 
 ```javascript
-fetch("https://dubois-buyse.onrender.com/api?echelon=1", {
+fetch("https://dubois-buyse.onrender.com/api?level=1", {
     method: "GET",
     headers: {
         "x-api-key": "YOUR_API_KEY_HERE",
@@ -131,9 +131,7 @@ fetch("https://dubois-buyse.onrender.com/api?echelon=1", {
 #### Using API Key as Query Parameter
 
 ```javascript
-fetch(
-    "https://dubois-buyse.onrender.com/api?echelon=1&api_key=YOUR_API_KEY_HERE"
-)
+fetch("https://dubois-buyse.onrender.com/api?level=1&api_key=YOUR_API_KEY_HERE")
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

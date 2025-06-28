@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 const createQueryRouter = require("./routes/queryHandler");
@@ -19,6 +20,7 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
+app.use(cors());
 app.use(apiKeyAuth);
 app.use("/api", queryRouter);
 
